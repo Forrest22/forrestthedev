@@ -36,15 +36,14 @@ br {
   backdrop-filter: blur(10px) brightness(60%);
   border-radius: 1em;
   padding: 1em;
-  margin: clamp(3rem, 8vw, 48rem) clamp(4rem, 20vw, 48rem) 0
-    clamp(4rem, 20vw, 48rem);
+  margin: clamp(3rem, 10vw, 48rem) clamp(4rem, 10vw, 48rem) 0
+    clamp(4rem, 10vw, 48rem);
   position: relative;
   z-index: 1;
-
   color: whitesmoke;
   display: block;
   font-family: "Noto Sans JP", sans-serif;
-  font-size: clamp(0.5rem, 1vw, 3rem);
+  font-size: clamp(1rem, 1vw, 3rem);
 }
 
 .center {
@@ -55,6 +54,7 @@ br {
 #menu-items {
   position: relative;
   z-index: 2;
+  text-decoration: underline;
 }
 
 #menu-items:hover ~ #container-background-pattern {
