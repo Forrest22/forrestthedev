@@ -1,6 +1,8 @@
 # forrestthe.dev — Static Site Generator
 
-Built with Python + Jinja2. Pulls pinned GitHub repos via the GraphQL API.
+Built with Python + Jinja2. Pulls pinned GitHub repos via the GraphQL API. Meant to be deployed on DigitalOcean.
+
+[See it live](https://forrestthe.dev/)
 
 ## Setup
 
@@ -27,5 +29,5 @@ Output is written to `dist/index.html`. Deploy that file to any static host
 
 ## GitHub Token
 
-Generate a fine-grained token at https://github.com/settings/tokens
+Generate a fine-grained token at <https://github.com/settings/tokens>
 with **read-only** access to public repositories. No extra scopes needed.
