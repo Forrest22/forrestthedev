@@ -8,6 +8,7 @@ import json
 import urllib.request
 import os
 from datetime import datetime
+import shutil
 from jinja2 import Environment, FileSystemLoader
 
 GITHUB_USERNAME = "Forrest22"
@@ -158,12 +159,16 @@ def build_site(token=None):
     print("Built dist/index.html successfully.")
 
     # Copy static assets
-    import shutil
     if os.path.exists("profile.jpg"):
         shutil.copy("profile.jpg", "dist/profile.jpg")
         print("Copied profile.jpg to dist/")
     else:
         print("Warning: profile.jpg not found in root — add it before deploying.")
+    if os.path.exists("favicon.ico"):
+        shutil.copy("favicon.ico", "dist/favicon.ico")
+        print("Copied favicon.ico to dist/")
+    else:
+        print("Warning: favicon.ico not found in root — add it before deploying.")
 
 
 if __name__ == "__main__":

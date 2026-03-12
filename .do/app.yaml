@@ -8,4 +8,4 @@ static_sites:
     name: forrestthedev
     source_dir: dist
     output_dir: dist
-    build_command: ""
+    build_command: "" # No build command, build should be done before committing.
