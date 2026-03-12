@@ -1,0 +1,9 @@
+name: forrestthedev-html
+static_sites:
+  - environment_slug: html
+    github:
+      branch: main
+      deploy_on_push: true
+      repo: Forrest22/forrestthedev
+    name: forrestthedev
+    output_dir: dist
