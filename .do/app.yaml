@@ -6,4 +6,6 @@ static_sites:
       deploy_on_push: true
       repo: Forrest22/forrestthedev
     name: forrestthedev
+    source_dir: dist
     output_dir: dist
+    build_command: ""
