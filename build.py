@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """
-Static site generator for forrestthe.dev
+Static site generator for https://forrestthe.dev/
 Fetches pinned GitHub repos via GraphQL API and renders via Jinja2.
 """
 
 import json
 import urllib.request
-import urllib.error
 import os
-from jinja2 import Environment, FileSystemLoader
 from datetime import datetime
+from jinja2 import Environment, FileSystemLoader
 
 GITHUB_USERNAME = "Forrest22"
 
