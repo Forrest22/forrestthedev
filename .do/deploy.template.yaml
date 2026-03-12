@@ -7,3 +7,4 @@ spec:
         repo_clone_url: https://github.com/Forrest22/forrestthedev.git
       name: forrestthedev
       output_dir: dist
+      source_dir: dist
