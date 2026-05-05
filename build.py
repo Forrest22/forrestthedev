@@ -5,10 +5,11 @@ Fetches pinned GitHub repos via GraphQL API and renders via Jinja2.
 """
 
 import json
-import urllib.request
 import os
-from datetime import datetime
 import shutil
+import sys
+import urllib.request
+from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 
 GITHUB_USERNAME = "Forrest22"
@@ -91,55 +92,91 @@ def fetch_pinned_repos(token=None):
 
             # Use pinned if available, otherwise fall back to recent non-fork repos
             if pinned:
-                return pinned
-            return [r for r in recent if not r.get("isFork")][:6]
+                return pinned, False
+            return [r for r in recent if not r.get("isFork")][:6], False
     except Exception as e:
         print(f"Warning: Could not fetch GitHub data ({e}). Using fallback projects.")
-        return get_fallback_projects()
+        return get_fallback_projects(), True
 
 
 def get_fallback_projects():
     """Fallback project data if GitHub API is unavailable."""
     return [
         {
-            "name": "personal-site",
-            "description": "My personal website built with Python, Jinja2, and vanilla HTML/CSS. Pulls pinned repos from the GitHub GraphQL API at build time.",
-            "url": f"https://github.com/{GITHUB_USERNAME}/personal-site",
+            "name": "AOC-2025",
+            "description": "Advent of Code 2025, completed using Python",
+            "url": f"https://github.com/{GITHUB_USERNAME}/AOC-2025",
             "stargazerCount": 0,
             "forkCount": 0,
             "primaryLanguage": {"name": "Python", "color": "#3572A5"},
-            "repositoryTopics": {"nodes": [{"topic": {"name": "jinja2"}}, {"topic": {"name": "static-site"}}]},
-            "homepageUrl": "https://forrestthe.dev",
-        },
-        {
-            "name": "project-two",
-            "description": "A backend service showcasing REST API design patterns and clean service architecture.",
-            "url": f"https://github.com/{GITHUB_USERNAME}",
-            "stargazerCount": 0,
-            "forkCount": 0,
-            "primaryLanguage": {"name": "TypeScript", "color": "#2b7489"},
-            "repositoryTopics": {"nodes": [{"topic": {"name": "nodejs"}}, {"topic": {"name": "rest-api"}}]},
+            "repositoryTopics": {"nodes": []},
             "homepageUrl": None,
         },
         {
-            "name": "project-three",
-            "description": "A React app with a focus on usability and clean component design.",
-            "url": f"https://github.com/{GITHUB_USERNAME}",
+            "name": "AOC-2024",
+            "description": "Advent of Code 2024, completed using Go",
+            "url": f"https://github.com/{GITHUB_USERNAME}/AOC-2024",
+            "stargazerCount": 0,
+            "forkCount": 0,
+            "primaryLanguage": {"name": "Go", "color": "#00ADD8"},
+            "repositoryTopics": {"nodes": []},
+            "homepageUrl": None,
+        },
+        {
+            "name": "disc-golf-event-buddy",
+            "description": "A live scoreboard display for disc golf events with customizable features, made for large screens.",
+            "url": f"https://github.com/{GITHUB_USERNAME}/disc-golf-event-buddy",
+            "stargazerCount": 0,
+            "forkCount": 0,
+            "primaryLanguage": {"name": "HTML", "color": "#e34c26"},
+            "repositoryTopics": {"nodes": []},
+            "homepageUrl": None,
+        },
+        {
+            "name": "discord-spotify-utility",
+            "description": "Utility discord bot to analyze and build playlists off a discord channel that uses spotify links.",
+            "url": f"https://github.com/{GITHUB_USERNAME}/discord-spotify-utility",
+            "stargazerCount": 0,
+            "forkCount": 0,
+            "primaryLanguage": {"name": "Python", "color": "#3572A5"},
+            "repositoryTopics": {"nodes": []},
+            "homepageUrl": None,
+        },
+        {
+            "name": "chess-botinator",
+            "description": "Chess Botinator is a chess bot built to destroy Will's chess bot. Built to integrate to UCI, mainly will be using https://github.com/lichess-bot-devs/lichess-bot",
+            "url": f"https://github.com/{GITHUB_USERNAME}/chess-botinator",
+            "stargazerCount": 0,
+            "forkCount": 0,
+            "primaryLanguage": {"name": "Python", "color": "#3572A5"},
+            "repositoryTopics": {"nodes": []},
+            "homepageUrl": None,
+        },
+        {
+            "name": "MrSuicideSheep-Backgrounds",
+            "description": "A complation of Mr. Suicidesheep's backgrounds on a cyberpunk inspired static website.",
+            "url": f"https://github.com/{GITHUB_USERNAME}/MrSuicideSheep-Backgrounds",
             "stargazerCount": 0,
             "forkCount": 0,
             "primaryLanguage": {"name": "JavaScript", "color": "#f1e05a"},
-            "repositoryTopics": {"nodes": [{"topic": {"name": "react"}}, {"topic": {"name": "frontend"}}]},
-            "homepageUrl": None,
+            "repositoryTopics": {"nodes": []},
+            "homepageUrl": f"https://{GITHUB_USERNAME}.github.io/MrSuicideSheep-Backgrounds/",
         },
     ]
 
 
-def build_site(token=None):
+def build_site(token=None, require_github=False):
     env = Environment(loader=FileSystemLoader("templates"))
     env.filters["pretty_name"] = lambda s: s.replace("-", " ").replace("_", " ").title()
 
-    projects = fetch_pinned_repos(token)
-    print(f"Fetched {len(projects)} projects from GitHub.")
+    projects, is_fallback = fetch_pinned_repos(token)
+    if is_fallback:
+        if require_github:
+            print("Error: GitHub API unavailable and --no-fallback is set. Aborting.")
+            sys.exit(1)
+        print(f"Using {len(projects)} fallback projects (GitHub API unavailable).")
+    else:
+        print(f"Fetched {len(projects)} projects from GitHub.")
 
     template = env.get_template("index.html")
     context = {
@@ -172,6 +209,8 @@ def build_site(token=None):
 
 
 if __name__ == "__main__":
-    import sys
-    token = os.environ.get("GITHUB_TOKEN") or (sys.argv[1] if len(sys.argv) > 1 else None)
-    build_site(token)
+    args = sys.argv[1:]
+    require_github = "--no-fallback" in args
+    args = [a for a in args if a != "--no-fallback"]
+    token = (args[0] if args else None) or os.environ.get("GITHUB_TOKEN")
+    build_site(token, require_github=require_github)

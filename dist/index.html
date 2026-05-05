@@ -880,23 +880,20 @@
             </div>
 
             <p class="project-desc">
-              Tee-time booking app for a local disc golf course, built as a
-              single deployable binary. A Go backend serves the React frontend
-              and all API routes — no separate web server or frontend host
-              needed.
+              Tee-time booking app for a local disc golf course. A Go backend
+              serves the React frontend and all API routes, so the whole thing
+              ships as a single binary with no separate web server needed.
             </p>
 
             <p class="project-desc" style="margin-top: 0.75rem">
-              Bookings are stored in PostgreSQL and automatically synced to
-              Google Calendar, which course staff use to view the schedule.
-              Credentials never touch the browser — the backend handles all
-              Google API communication through a service account. The frontend
-              is mobile-friendly, with server-side rendering for fast initial
-              loads and client-side navigation after hydration. Course
-              configuration — hours, fees, and group size — is served
-              dynamically from the backend. Runs as a Docker container on a
-              DigitalOcean droplet, with infrastructure managed as code and a
-              staging environment for testing changes before they go live.
+              Bookings sync automatically to Google Calendar so course staff
+              always have an up-to-date schedule without logging into anything.
+              The backend handles all Google API communication through a service
+              account, keeping credentials off the browser entirely. The
+              frontend is mobile-friendly with server-side rendering for fast
+              initial loads. Course hours, fees, and group sizes are all
+              configurable from the backend. Runs in Docker on a DigitalOcean
+              droplet with a staging environment for testing before going live.
             </p>
 
             <div class="pill-list" style="margin-top: 1.5rem">

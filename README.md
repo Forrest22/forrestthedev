@@ -21,11 +21,14 @@ source venv/bin/activate
 python build.py
 
 # With a GitHub personal access token (recommended — avoids rate limits)
-export GITHUB_TOKEN=ghp_your_token_here
+export GITHUB_TOKEN=$(cat .github_token)
 python build.py
 
-# Or pass it directly
-python build.py ghp_your_token_here
+# Or pass it directly (CLI arg takes precedence over env var)
+python build.py $(cat .github_token)
+
+# Fail the build if GitHub API is unreachable instead of using fallback data
+python build.py --no-fallback
 ```
 
 Output is written to `dist/index.html`. **Commit the `dist/` directory** — the
