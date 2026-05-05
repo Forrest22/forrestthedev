@@ -858,12 +858,57 @@
     <section id="projects">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">// pinned on github</span>
+          <span class="section-tag">// projects</span>
           <h2 class="section-title">Things I've <em>built</em></h2>
           <div class="section-line"></div>
         </div>
 
         <div class="projects-grid">
+          <a
+            class="project-card"
+            href="https://bigrockdiscgolf.com"
+            target="_blank"
+            rel="noopener"
+            aria-label="Big Rock Scheduler"
+            style="grid-column: 1 / -1"
+          >
+            <div class="project-header">
+              <span class="project-name">Big Rock Scheduler</span>
+              <div class="project-links">
+                <span class="project-link" title="Live site">↗</span>
+              </div>
+            </div>
+
+            <p class="project-desc">
+              Tee-time booking app for a local disc golf course, built as a
+              single deployable binary. A Go backend serves the React frontend
+              and all API routes — no separate web server or frontend host
+              needed.
+            </p>
+
+            <p class="project-desc" style="margin-top: 0.75rem">
+              Bookings are stored in PostgreSQL and automatically synced to
+              Google Calendar, which course staff use to view the schedule.
+              Credentials never touch the browser — the backend handles all
+              Google API communication through a service account. The frontend
+              is mobile-friendly, with server-side rendering for fast initial
+              loads and client-side navigation after hydration. Course
+              configuration — hours, fees, and group size — is served
+              dynamically from the backend. Runs as a Docker container on a
+              DigitalOcean droplet, with infrastructure managed as code and a
+              staging environment for testing changes before they go live.
+            </p>
+
+            <div class="pill-list" style="margin-top: 1.5rem">
+              <span class="pill">Go</span>
+              <span class="pill">React</span>
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">Google Calendar API</span>
+              <span class="pill">Docker</span>
+              <span class="pill">DigitalOcean</span>
+            </div>
+          </a>
+
           {% for project in projects %}
           <a
             class="project-card"

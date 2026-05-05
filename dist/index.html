@@ -29,6 +29,7 @@
           }));
       plausible.init();
     </script>
+
     <style>
       /* ──────────────────────────────
        DESIGN SYSTEM
@@ -857,12 +858,58 @@
     <section id="projects">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">// pinned on github</span>
+          <span class="section-tag">// projects</span>
           <h2 class="section-title">Things I've <em>built</em></h2>
           <div class="section-line"></div>
         </div>
 
         <div class="projects-grid">
+          <a
+            class="project-card"
+            href="https://bigrockdiscgolf.com"
+            target="_blank"
+            rel="noopener"
+            aria-label="Big Rock Scheduler"
+            style="grid-column: 1 / -1"
+          >
+            <div class="project-header">
+              <span class="project-name">Big Rock Scheduler</span>
+              <div class="project-links">
+                <span class="project-link" title="Live site">↗</span>
+              </div>
+            </div>
+
+            <p class="project-desc">
+              Tee-time booking app for a local disc golf course, built as a
+              single deployable binary. A Go backend serves the React frontend
+              and all API routes — no separate web server or frontend host
+              needed.
+            </p>
+
+            <p class="project-desc" style="margin-top: 0.75rem">
+              Bookings are stored in PostgreSQL and automatically synced to
+              Google Calendar, which course staff use to view the schedule.
+              Credentials never touch the browser — the backend handles all
+              Google API communication through a service account. The frontend
+              is mobile-friendly, with server-side rendering for fast initial
+              loads and client-side navigation after hydration. Course
+              configuration — hours, fees, and group size — is served
+              dynamically from the backend. Runs as a Docker container on a
+              DigitalOcean droplet, with infrastructure managed as code and a
+              staging environment for testing changes before they go live.
+            </p>
+
+            <div class="pill-list" style="margin-top: 1.5rem">
+              <span class="pill">Go</span>
+              <span class="pill">React</span>
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">Google Calendar API</span>
+              <span class="pill">Docker</span>
+              <span class="pill">DigitalOcean</span>
+            </div>
+          </a>
+
+          
           <a
             class="project-card"
             href="https://github.com/Forrest22/AOC-2025"
@@ -873,6 +920,7 @@
             <div class="project-header">
               <span class="project-name">Aoc 2025</span>
               <div class="project-links">
+                
                 <span class="project-link" title="GitHub">
                   <svg
                     width="16"
@@ -892,12 +940,19 @@
               Advent of Code 2025, completed using Python
             </p>
 
+             
+
             <div class="project-meta">
-              <span class="lang-dot" style="background: #3572a5"></span>
+              
+              <span
+                class="lang-dot"
+                style="background: #3572A5"
+              ></span>
               <span class="lang-name">Python</span>
+               
             </div>
           </a>
-
+          
           <a
             class="project-card"
             href="https://github.com/Forrest22/AOC-2024"
@@ -908,6 +963,7 @@
             <div class="project-header">
               <span class="project-name">Aoc 2024</span>
               <div class="project-links">
+                
                 <span class="project-link" title="GitHub">
                   <svg
                     width="16"
@@ -923,14 +979,23 @@
               </div>
             </div>
 
-            <p class="project-desc">Advent of Code 2024, completed using Go</p>
+            <p class="project-desc">
+              Advent of Code 2024, completed using Go
+            </p>
+
+             
 
             <div class="project-meta">
-              <span class="lang-dot" style="background: #00add8"></span>
+              
+              <span
+                class="lang-dot"
+                style="background: #00ADD8"
+              ></span>
               <span class="lang-name">Go</span>
+               
             </div>
           </a>
-
+          
           <a
             class="project-card"
             href="https://github.com/Forrest22/disc-golf-event-buddy"
@@ -941,8 +1006,9 @@
             <div class="project-header">
               <span class="project-name">Disc Golf Event Buddy</span>
               <div class="project-links">
+                
                 <span class="project-link" title="Live site">↗</span>
-
+                
                 <span class="project-link" title="GitHub">
                   <svg
                     width="16"
@@ -959,16 +1025,22 @@
             </div>
 
             <p class="project-desc">
-              A live scoreboard display for disc golf events with customizable
-              features, made for large screens.
+              A live scoreboard display for disc golf events with customizable features, made for large screens.
             </p>
 
+             
+
             <div class="project-meta">
-              <span class="lang-dot" style="background: #e34c26"></span>
+              
+              <span
+                class="lang-dot"
+                style="background: #e34c26"
+              ></span>
               <span class="lang-name">HTML</span>
+               
             </div>
           </a>
-
+          
           <a
             class="project-card"
             href="https://github.com/Forrest22/discord-spotify-utility"
@@ -979,6 +1051,7 @@
             <div class="project-header">
               <span class="project-name">Discord Spotify Utility</span>
               <div class="project-links">
+                
                 <span class="project-link" title="GitHub">
                   <svg
                     width="16"
@@ -995,16 +1068,22 @@
             </div>
 
             <p class="project-desc">
-              Utility discord bot to analyze and build playlists off a discord
-              channel that uses spotify links.
+              Utility discord bot to analyze and build playlists off a discord channel that uses spotify links.
             </p>
 
+             
+
             <div class="project-meta">
-              <span class="lang-dot" style="background: #3572a5"></span>
+              
+              <span
+                class="lang-dot"
+                style="background: #3572A5"
+              ></span>
               <span class="lang-name">Python</span>
+               
             </div>
           </a>
-
+          
           <a
             class="project-card"
             href="https://github.com/Forrest22/chess-botinator"
@@ -1015,6 +1094,7 @@
             <div class="project-header">
               <span class="project-name">Chess Botinator</span>
               <div class="project-links">
+                
                 <span class="project-link" title="GitHub">
                   <svg
                     width="16"
@@ -1031,17 +1111,22 @@
             </div>
 
             <p class="project-desc">
-              Chess Botinator is a chess bot built to destroy Will's chess bot.
-              Built to integrate to UCI, mainly will be using
-              https://github.com/lichess-bot-devs/lichess-bot
+              Chess Botinator is a chess bot built to destroy Will's chess bot. Built to integrate to UCI, mainly will be using https://github.com/lichess-bot-devs/lichess-bot
             </p>
 
+             
+
             <div class="project-meta">
-              <span class="lang-dot" style="background: #3572a5"></span>
+              
+              <span
+                class="lang-dot"
+                style="background: #3572A5"
+              ></span>
               <span class="lang-name">Python</span>
+               
             </div>
           </a>
-
+          
           <a
             class="project-card"
             href="https://github.com/Forrest22/MrSuicideSheep-Backgrounds"
@@ -1052,8 +1137,9 @@
             <div class="project-header">
               <span class="project-name">Mrsuicidesheep Backgrounds</span>
               <div class="project-links">
+                
                 <span class="project-link" title="Live site">↗</span>
-
+                
                 <span class="project-link" title="GitHub">
                   <svg
                     width="16"
@@ -1070,16 +1156,22 @@
             </div>
 
             <p class="project-desc">
-              A complation of Mr. Suicidesheep's backgrounds on a cyberpunk
-              inspired static website.
-              https://forrest22.github.io/MrSuicideSheep-Backgrounds/
+              A complation of Mr. Suicidesheep's backgrounds on a cyberpunk inspired static website. https://forrest22.github.io/MrSuicideSheep-Backgrounds/
             </p>
 
+             
+
             <div class="project-meta">
-              <span class="lang-dot" style="background: #f1e05a"></span>
+              
+              <span
+                class="lang-dot"
+                style="background: #f1e05a"
+              ></span>
               <span class="lang-name">JavaScript</span>
+               
             </div>
           </a>
+          
         </div>
 
         <p style="margin-top: 2.5rem; text-align: center">
@@ -1210,17 +1302,11 @@
     <footer>
       <p>
         Built by
-        <a
-          href="https://www.linkedin.com/in/forrest-dodds/"
-          target="_blank"
-          rel="noopener"
+        <a href="https://www.linkedin.com/in/forrest-dodds/" target="_blank" rel="noopener"
           >Forrest Dodds</a
         >
         with Python, Jinja2 &amp; vanilla HTML ·
-        <a
-          href="https://github.com/Forrest22/forrestthedev"
-          target="_blank"
-          rel="noopener"
+        <a href="https://github.com/Forrest22/forrestthedev" target="_blank" rel="noopener"
           >Source on GitHub</a
         >
         · © 2026
